@@ -1,6 +1,5 @@
 package com.soict.hoangviet.procoroutines.ui.news
 
-import android.bluetooth.le.AdvertiseData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -46,15 +45,19 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>() {
     }
 
     override fun initListener() {
-        newsViewModel.listNews.observe(this, Observer {
+        newsViewModel.itemList.observe(this, Observer {
             it?.let {
                 newsAdapter.submitList(it)
             }
         })
-        newsViewModel.getNewsDataSource().observe(this, Observer {
+        newsViewModel.listResponse.observe(this, Observer {
             it?.let {
+                if (swipe_refresh.isRefreshing) swipe_refresh.isRefreshing = false
                 handleListLoadMoreResponse(it)
             }
         })
+        swipe_refresh.setOnRefreshListener {
+            newsViewModel.refreshData()
+        }
     }
 }

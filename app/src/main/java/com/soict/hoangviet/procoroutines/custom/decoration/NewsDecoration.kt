@@ -12,22 +12,10 @@ class NewsDecoration(val padding: Int) : RecyclerView.ItemDecoration() {
         state: RecyclerView.State
     ) {
         val position = parent.getChildAdapterPosition(view)
-        when (position) {
-            0 -> {
-                outRect.apply {
-                    top = padding
-                    bottom = padding
-                    left = padding
-                    right = padding
-                }
-            }
-            else -> {
-                outRect.apply {
-                    bottom = padding
-                    left = padding
-                    right = padding
-                }
-            }
+        outRect.apply {
+            bottom = padding
+            left = padding
+            right = padding
         }
     }
 }

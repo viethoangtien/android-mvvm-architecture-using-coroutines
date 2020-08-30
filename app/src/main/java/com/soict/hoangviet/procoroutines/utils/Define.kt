@@ -9,6 +9,11 @@ object Define {
         const val ERROR = 2
     }
 
+    object Paging{
+        const val PAGE_SIZE = 10
+        const val FIRST_PAGE = 1
+    }
+
     object ApiService {
         object RelativeUrl {
             const val LIST_NEWS = "listNews"

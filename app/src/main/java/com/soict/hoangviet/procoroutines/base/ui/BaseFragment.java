@@ -215,6 +215,7 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends DaggerFrag
         Boolean isShowToast = false;
         if (throwable instanceof NetworkConnectionInterceptor.NoConnectivityException) {
             apiError = new ApiError(throwable.getMessage());
+            isShowToast = true;
         } else if (throwable instanceof HttpException) {
             HttpException httpException = (HttpException) throwable;
             try {
